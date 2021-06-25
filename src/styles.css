@@ -1,0 +1,41 @@
+.box {
+    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    border: 2px solid black;
+    margin: 10px 80px;
+  }
+  img {
+    opacity: 0.7;
+  }
+  h5,
+  p {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .forecast {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .temperature,
+  .weather {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 50px;
+    font-family: "Roboto", sans-serif;
+  }
+  .card-body {
+    background: radial-gradient(
+      592px at 48.2% 50%,
+      rgba(255, 255, 249, 0.6) 0%,
+      rgb(160, 199, 254) 74.6%
+    );
+  }
+  #day-description {
+    text-transform: capitalize;
+  }
+  #current-button {
+    margin-left: 10px;
+    padding: 10 0 10 0;
+    border-radius: 10%;
+  }
+  
