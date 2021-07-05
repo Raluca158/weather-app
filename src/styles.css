@@ -32,6 +32,7 @@ p {
 }
 #day-description {
   text-transform: capitalize;
+  display: block;
 }
 #current-button {
   margin-left: 10px;
