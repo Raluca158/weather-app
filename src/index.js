@@ -13,6 +13,13 @@ let day = days[time.getDay()];
 let hour = time.getHours();
 let minutes = time.getMinutes();
 currentDate.innerHTML = ` ${day}, ${hour}:${minutes}`;
+if (hour < 10) {
+  hour = `0${hour}`
+};
+if (minutes < 10) {
+minutes = `0${minutes}`
+};
+
 
 let cityInput = document.querySelector("#city-input");
 let city = cityInput.value;
