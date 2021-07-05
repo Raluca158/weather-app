@@ -46,6 +46,9 @@ function displayTemp(response) {
   let weatherDescription = response.data.weather[0].description;
   let displayDescription = document.querySelector("#day-description");
   displayDescription.innerHTML = weatherDescription;
+  
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
   let minTemp = Math.round(response.data.main.temp_min);
   let displayMinTemp = document.querySelector("#min-temp");
