@@ -42,3 +42,19 @@ p {
 .git-code {
   font-size: 12px;
 }
+#celsius-unit {
+  margin-left: 7px;
+}
+#celsius-unit, #fahrenheit-unit {
+  text-decoration: none;
+}
+#celsius-unit .active {
+  color: black;
+  cursor: default;
+}
+#celsius-unit .active:hover {
+  text-decoration: none;
+}
+.units {
+  text-decoration: none;
+}

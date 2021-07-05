@@ -13,12 +13,6 @@ let day = days[time.getDay()];
 let hour = time.getHours();
 let minutes = time.getMinutes();
 currentDate.innerHTML = ` ${day}, ${hour}:${minutes}`;
-if (hour < 10) {
-  hour = `0${hour}`
-};
-if (minutes < 10) {
-minutes = `0${minutes}`
-};
 
 
 let cityInput = document.querySelector("#city-input");
@@ -34,6 +28,7 @@ function displayTemp(response) {
   let cityTemp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#temperature");
   currentTemp.innerHTML = `${cityTemp} `;
+  celsiusTemp = response.data.main.temp;
 
   let humidity = response.data.main.humidity;
   let displayHumidity = document.querySelector("#humidity");
@@ -53,10 +48,12 @@ function displayTemp(response) {
   let minTemp = Math.round(response.data.main.temp_min);
   let displayMinTemp = document.querySelector("#min-temp");
   displayMinTemp.innerHTML = `Min. temp: ${minTemp}°C`;
+  
 
   let maxTemp = Math.round(response.data.main.temp_max);
   let displayMaxTemp = document.querySelector("#max-temp");
   displayMaxTemp.innerHTML = `Max. temp: ${maxTemp}°C`;
+  
 }
 
 function search(event) {
@@ -87,3 +84,23 @@ function searchLocation(position) {
 
 let locationButton = document.querySelector("#current-button");
 locationButton.addEventListener("click", getCurrentLocation);
+
+function displayFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);}
+
+function displayCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+
+  
+}
+let celsiusTemp = null;
+let fahrenheitLink = document.querySelector("#fahrenheit-unit");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-unit");
+celsiusLink.addEventListener("click", displayCelsius);
