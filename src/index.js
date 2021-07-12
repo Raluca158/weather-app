@@ -14,26 +14,38 @@ let hour = time.getHours();
 let minutes = time.getMinutes();
 currentDate.innerHTML = ` ${day}, ${hour}:${minutes}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+  return days[day];
+}
 
 
 
 function displayForecast (response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement= document.querySelector("#forecast");
-  let days = ["Thursday", "Friday", "Saturday", " Sunday", "Monday"];
+  
   let forecastHTML = `<div class = "col-5">`;
 
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
   forecastHTML = forecastHTML + 
   `
   <div class="card text-center" style="width: 15rem;">
   <div class="card-body">
-    <h5 class="card-title">${day}</h5>
-    <p class="card-text">16°C ⛅</p>
+    <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
+    <p class="card-text">${Math.round(forecastDay.temp.day)}°C</p>
+    <img
+    src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+    alt=""
+    width="42"
+  />
   </div>
   </div>
-  `;
+  `;}
  });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
