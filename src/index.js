@@ -76,11 +76,11 @@ function displayTemp(response) {
 
   let maxTemp = Math.round(response.data.main.temp_max);
   let displayMaxTemp = document.querySelector("#max-temp");
-  displayMaxTemp.innerHTML = `Max. temp: ${maxTemp}°C`;
+  displayMaxTemp.innerHTML = `Max. temp: ${maxTemp}°C`;  
 
-  
-  
+  getForecast(response.main.coord);
 }
+
 
 function search(event) {
   event.preventDefault();
@@ -88,11 +88,16 @@ function search(event) {
   let currentCity = document.querySelector("#current-city");
   let city = cityInput.value;
   currentCity.innerHTML = city;
-  
+
+  searchCity(city); 
+}
+
+  function searchCity(city) {
+
   apiKey = "fa8e748cbde4ed02a809ebf9c178a37b";
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
-}
+ }
 
 
 let form = document.querySelector("#city-search");
@@ -128,10 +133,11 @@ function displayCelsius(event) {
 
 
 let celsiusTemp = null;
+
 let fahrenheitLink = document.querySelector("#fahrenheit-unit");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-unit");
 celsiusLink.addEventListener("click", displayCelsius);
 
-
+searchCity("Amsterdam");
