@@ -78,7 +78,7 @@ function displayTemp(response) {
   let displayMaxTemp = document.querySelector("#max-temp");
   displayMaxTemp.innerHTML = `Max. temp: ${maxTemp}°C`;  
 
-  getForecast(response.main.coord);
+  getForecast(response.data.coord);
 }
 
 
